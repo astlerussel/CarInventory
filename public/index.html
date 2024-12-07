@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src * 'self' 'unsafe-inline' 'unsafe-eval' data: gap: content:"
+    />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#2196f3" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <title>Car Inventory</title>
+    <link rel="apple-touch-icon" href="img/f7-icon-square.png" />
+    <link rel="icon" href="img/f7-icon.png" />
+    <link rel="stylesheet" href="./index.css" />
+	
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- Status bar overlay for fullscreen mode-->
+      <div class="statusbar"></div>
+      <!-- Main view -->
+      <div class="view view-main view-init ios-edges" data-url="/">
+        <div class="page">
+          <nav class="navbar">
+            <div class="navbar-inner">
+              <h1 class="title sliding">Car Inventory</h1>
+            </div>
+          </nav>
+          <main class="page-content">
+            <!-- Tabs for navigation -->
+            <div class="tabs">
+              <!-- Tab 1: Login / Signup -->
+              <div id="tab1" class="block tab tab-active">
+                <div class="row">
+                  &nbsp;
+                  <p id="loginSignin" class="segmented segmented-raised">
+                    <a
+                      href="#"
+                      class="button login-screen-open"
+                      data-login-screen=".signupYes"
+                      >Sign Up</a
+                    >
+                    <a
+                      href="#"
+                      class="button button-active login-screen-open"
+                      data-login-screen=".loginYes"
+                      >Sign In</a
+                    >
+                  </p>
+                </div>
+                <p><strong>My Car Haven</strong>
+					Your ultimate personal car inventory app! Easily add, organize, and track your car </br>
+					collection with photos, details, and milestones. Mark cars as bought, plan future purchases, or </br>
+					reminisce about past rides. Stay in control of your garage, one car at a time. Manage your rides like never before! </br>
+					
+                </p>
+              </div>
+              <!-- Tab 2: Cars List -->
+              <div id="tab2" class="block tab">
+                <div class="row">
+                  &nbsp;
+                  <button id="logout" class="button button-raised">
+                    Logout
+                  </button>
+                </div>
+                
+<!-- Add Car FAB with Text -->
+<div class="fab fab-right-bottom">
+    <a href="#" data-sheet=".my-sheet" class="sheet-open">
+        <span class="material-icons">
+			add
+			</span>
+			
+    </a>
+	
+</div>
+
+
+
+
+                <!-- Cars List -->
+                <div id="carList">
+                  <p>No cars to display. Add your first car!</p>
+                </div>
+              </div>
+            </div>
+          </main>
+          <!-- Login Screen -->
+          <div class="login-screen loginYes">
+            <div class="view">
+              <div class="page">
+                <div class="page-content login-screen-content">
+                  <h1 style="text-align: center;">Car Inventory</h1>
+                  <div class="login-screen-title">Sign In</div>
+                  <form id="loginForm">
+                    <div class="list">
+                      <ul>
+                        <li class="item-content item-input">
+                          <div class="item-inner">
+                            <div class="item-title item-label">Email</div>
+                            <div class="item-input-wrap">
+                              <input
+                                type="email"
+                                name="email"
+                                placeholder="Your email"
+                              />
+                            </div>
+                          </div>
+                        </li>
+                        <li class="item-content item-input">
+                          <div class="item-inner">
+                            <div class="item-title item-label">Password</div>
+                            <div class="item-input-wrap">
+                              <input
+                                type="password"
+                                name="password"
+                                placeholder="Your password"
+                              />
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="list">
+                      <ul>
+                        <li>
+                          <button
+                            type="submit"
+                            id="signInButton"
+                            class="button button-active"
+                          >
+                            Sign In
+                          </button>
+                        </li>
+                      </ul>
+                      <div class="block-footer">
+                        <p id="signInError"></p>
+                        <div class="line-with-text">
+                          <hr>
+                          <span>Or</span>
+                          <hr>
+                      </div>
+                        <div class="center-container">
+                          <button
+                            id="googleSignIn"
+                            class="google-signin-button"
+                          >
+                            <img
+                              src="https://developers.google.com/identity/images/g-logo.png"
+                              alt="Google logo"
+                              class="google-logo"
+                            />
+                            Sign in with Google
+                          </button>
+                        </div>
+
+                        <p>
+                          <a class="link login-screen-close" href="#"
+                            >Close Login Screen</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Signup Screen -->
+          <div class="login-screen signupYes">
+            <div class="view">
+              <div class="page">
+                <div class="page-content login-screen-content">
+                  <h1 style="text-align: center;">Car Inventory</h1>
+                  <div class="login-screen-title">Sign Up</div>
+                  <form id="signUpForm">
+                    <div class="list">
+                      <ul>
+                        <li class="item-content item-input">
+                          <div class="item-inner">
+                            <div class="item-title item-label">Email</div>
+                            <div class="item-input-wrap">
+                              <input
+                                type="email"
+                                name="email"
+                                placeholder="Your email"
+                              />
+                            </div>
+                          </div>
+                        </li>
+                        <li class="item-content item-input">
+                          <div class="item-inner">
+                            <div class="item-title item-label">Password</div>
+                            <div class="item-input-wrap">
+                              <input
+                                type="password"
+                                name="password"
+                                placeholder="Your password"
+                              />
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="list">
+                      <ul>
+                        <li>
+                          <button
+                            id="signUpButton"
+                            type="submit"
+                            class="button button-active"
+                          >
+                            Sign Up
+                          </button>
+                        </li>
+                      </ul>
+                      <div class="block-footer">
+                        <p id="signUpError"></p>
+                        <div class="line-with-text">
+                          <hr>
+                          <span>Or</span>
+                          <hr>
+                      </div>
+
+                        <div class="center-container">
+                          <button
+                            id="googleSignUp"
+                            class="google-signin-button"
+                          >
+                            <img
+                              src="https://developers.google.com/identity/images/g-logo.png"
+                              alt="Google logo"
+                              class="google-logo"
+                            />
+                            Sign up with Google
+                          </button>
+                        </div>
+
+                        <p>
+                          <a class="link login-screen-close" href="#"
+                            >Close Signup Screen</a
+                          >
+                        </p>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Add Car Sheet -->
+          <form id="addCar" class="sheet-modal my-sheet list">
+            <div class="toolbar">
+              <div class="toolbar-inner block">
+                <div class="left">Add a Car To Inventory</div>
+                <p id="closeSave" class="segmented segmented-raised">
+                  <a href="#" class="button sheet-close">Close </a>
+                  <button type="submit" class="button button-active">
+                    Save
+                  </button>
+                </p>
+              </div>
+            </div>
+            <div class="sheet-modal-inner">
+              <ul>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <label class="item-title item-label">Car Name:</label>
+                      <div class="item-input-wrap">
+                        <input type="text" name="name" placeholder="Car name" />
+                      </div>
+					  <span id="carNameError" class="error-message"></span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <label class="item-title item-label">Model:</label>
+                      <div class="item-input-wrap">
+                        <input
+                          type="text"
+                          name="model"
+                          placeholder="Car model"
+                        />
+                      </div>
+					  <span id="carModelError" class="error-message"></span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <label class="item-title item-label">Year:</label>
+                      <div class="item-input-wrap">
+                        <input
+                          type="number"
+                          name="year"
+                          placeholder="Year of manufacture"
+                        />
+                      </div>
+					  <span id="carYearError" class="error-message"></span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <label class="item-title item-label">Price ($):</label>
+                      <div class="item-input-wrap">
+                        <input type="number" step="0.01" name="price" placeholder="Price" />
+                      </div>
+					  <span id="carPriceError" class="error-message"></span>
+                    </div>
+                  </div>
+                </li>
+                <li>
+                  <div class="item-content item-input">
+                    <div class="item-inner">
+                      <label class="item-title item-label"
+                        >Car Image Url:</label
+                      >
+                      <div class="item-input-wrap">
+                        <input
+                          type="text"
+                          name="carImage"
+                          placeholder="Car image URL"
+                        />
+                      </div>
+					  <span id="carImageError" class="error-message"></span>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>
